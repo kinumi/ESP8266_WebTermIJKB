@@ -312,13 +312,14 @@ void serial2ws(int select) {
     size_t len = Serial.available();
     uint8_t sbuf[len];
     Serial.readBytes(sbuf, len);
-    if (WS_connected){
       digitalWrite(LED2, HIGH);   // turn the LED on (HIGH is the voltage level)
       for (int i= 0 ; i< len ;i++) {
           IJCodeConv(sbuf[i]);
        }
+    if (WS_connected){
        webSocket.sendBIN(WS_num, termCodeBuff, termCodeLen);
        termCodeLen = 0;
+    }
       if(select != 0) { 
         for (int i= 0 ; i< len ;i++) {
             MJ_Command((char)sbuf[i]);
@@ -330,7 +331,6 @@ void serial2ws(int select) {
       }
      
       digitalWrite(LED2, LOW);    // turn the LED off by making the voltage LOW
-    }
   }
 }
 
