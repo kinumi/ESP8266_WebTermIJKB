@@ -26,7 +26,7 @@ int WS_num = 0;
 QueueArray <char> queue;
 
 ESP8266WiFiMulti WiFiMulti;
-ESP8266WebServer server = ESP8266WebServer(80);
+ESP8266WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 void serverSetup();
 void serial2ws(int select);
@@ -887,5 +887,3 @@ void MJ_POST_START(int type, String addr) {
     postmode=true;
   }
 }
-
-
