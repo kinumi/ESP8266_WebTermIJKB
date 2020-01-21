@@ -175,6 +175,8 @@ void serverSetup() {
   server.begin();
   Serial.println("'HTTP server started\n");
 
+  Serial.println("LRUN0\n");
+
   // Add service to MDNS
   MDNS.addService("http", "tcp", 80);
   MDNS.addService("ws", "tcp", 81);
